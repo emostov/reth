@@ -6,7 +6,7 @@ use crate::{
 };
 use reth_db::test_utils::create_test_rw_db;
 use reth_primitives::{BlockBody, SealedBlock};
-use reth_provider::{BlockWriter, ProviderFactory};
+use reth_provider::{BlockNumReader, BlockWriter, HeaderProvider, ProviderFactory};
 use reth_rlp::Decodable;
 use reth_stages::{stages::ExecutionStage, ExecInput, Stage};
 use std::{collections::BTreeMap, fs, path::Path, sync::Arc};
@@ -111,8 +111,10 @@ impl Case for BlockchainTestCase {
             // Validate post state
             match &case.post_state {
                 Some(RootOrState::Root(root)) => {
-                    // TODO: We should really check the state root here...
-                    println!("Post-state root: #{root:?}")
+                    let last_block = last_block
+                        .expect("Attempted state root check for test case with no blocks");
+                    let header = factory.header_by_number(last_block).unwrap().unwrap();
+                    assert_eq!(*root, header.state_root)
                 }
                 Some(RootOrState::State(state)) => {
                     for (&address, account) in state.iter() {
