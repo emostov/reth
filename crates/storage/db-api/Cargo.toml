@@ -20,6 +20,7 @@ reth-prune-types.workspace = true
 reth-storage-errors.workspace = true
 reth-stages-types.workspace = true
 reth-trie-common.workspace = true
+reth-db-data-traits.workspace = true
 
 # codecs
 modular-bitfield.workspace = true

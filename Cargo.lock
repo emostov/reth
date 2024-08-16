@@ -6762,6 +6762,7 @@ dependencies = [
  "proptest-arbitrary-interop",
  "rand 0.8.5",
  "reth-codecs",
+ "reth-db-data-traits",
  "reth-primitives",
  "reth-primitives-traits",
  "reth-prune-types",
@@ -6796,6 +6797,18 @@ dependencies = [
  "serde_json",
  "thiserror",
  "tracing",
+]
+
+[[package]]
+name = "reth-db-data-traits"
+version = "1.0.5"
+dependencies = [
+ "bytes",
+ "modular-bitfield",
+ "parity-scale-codec",
+ "reth-primitives",
+ "reth-storage-errors",
+ "serde",
 ]
 
 [[package]]

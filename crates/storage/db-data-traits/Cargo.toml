@@ -1,0 +1,26 @@
+[package]
+name = "reth-db-data-traits"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+description = "Traits for reth database keys and values."
+
+[lints]
+workspace = true
+
+[dependencies]
+# reth
+reth-storage-errors.workspace = true
+reth-primitives = { workspace = true }
+
+# codecs
+modular-bitfield.workspace = true
+parity-scale-codec = { version = "3.2.1", features = ["bytes"] }
+serde = { workspace = true, default-features = false }
+
+# misc
+bytes.workspace = true
+
